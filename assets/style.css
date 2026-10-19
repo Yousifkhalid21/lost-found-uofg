@@ -1,0 +1,151 @@
+@font-face { font-family: 'FigaroLab Brand'; src: url('fonts/figarolab-brand.woff') format('woff'); font-weight: 400; font-display: swap; }
+/* ===== الخطوط: ثمانية (Thmanyah) ===== */
+@font-face { font-family: 'Thmanyah Sans'; src: url('fonts/thmanyahsans-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Thmanyah Sans'; src: url('fonts/thmanyahsans-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Thmanyah Sans'; src: url('fonts/thmanyahsans-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Thmanyah Serif Display'; src: url('fonts/thmanyahserifdisplay-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Thmanyah Serif Display'; src: url('fonts/thmanyahserifdisplay-Black.woff2') format('woff2'); font-weight: 900; font-display: swap; }
+
+:root {
+  --main: #1F5F8B; --main-dark: #164766; --accent: #F28C28; --bg: #F5F7FA; --text: #1d2430;
+  --font-body: 'Thmanyah Sans', Tahoma, sans-serif;
+  --font-display: 'Thmanyah Serif Display', 'Thmanyah Sans', serif;
+}
+body { font-family: var(--font-body); font-weight: 400; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; line-height: 1.8; }
+main { flex: 1; }
+
+/* العناوين بخط العرض */
+h1, h2, h3, .navbar-brand, .form-box h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.4; }
+h4, h5, h6, .card-title, .btn, .nav-link, .form-label, .badge { font-family: var(--font-body); font-weight: 500; }
+.card-title { font-weight: 700; }
+
+/* شريط التنقل */
+.site-nav { background: var(--main); }
+.navbar-brand { font-size: 1.5rem; font-weight: 900; }
+.nav-link { font-size: 1.02rem; }
+
+.brand-logo { width: 46px; height: 46px; border-radius: 50%; background: #fff; padding: 3px; box-shadow: 0 2px 8px rgba(0,0,0,.25); display: inline-flex; flex-shrink: 0; transition: transform .3s; }
+.brand-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+.navbar-brand:hover .brand-logo { transform: rotate(-8deg) scale(1.06); }
+.brand-text { display: flex; flex-direction: column; line-height: 1.2; gap: .2rem; }
+.brand-text small { font-family: var(--font-body); font-weight: 400; font-size: .72rem; opacity: .8; }
+
+/* الأزرار */
+.btn-accent { background: var(--accent); color: #fff; border: 0; }
+.btn-accent:hover { background: #d97a1c; color: #fff; }
+
+/* الواجهة الرئيسية */
+.hero { background: linear-gradient(135deg, var(--main), #2f7fb0); color: #fff; border-radius: 1.25rem; padding: 4rem 1.5rem; text-align: center; }
+.hero-logo { width: 110px; height: 110px; border-radius: 50%; background: #fff; padding: 6px; box-shadow: 0 0 0 6px rgba(255,255,255,.18), 0 10px 25px rgba(0,0,0,.25); margin-bottom: 1.25rem; object-fit: contain; }
+.hero h1 { font-weight: 900; font-size: clamp(1.9rem, 4.5vw, 3rem); margin-bottom: .75rem; }
+.hero .lead { font-size: 1.15rem; opacity: .92; margin-bottom: 1.75rem; }
+
+/* بطاقات الأغراض */
+.item-card { border: 0; border-radius: .9rem; box-shadow: 0 2px 10px rgba(0,0,0,.07); overflow: hidden; transition: transform .2s, box-shadow .2s; }
+.item-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.1); }
+.item-img { height: 180px; object-fit: cover; width: 100%; }
+.no-img { display: flex; align-items: center; justify-content: center; background: #e3ebf2; font-size: 3rem; }
+
+/* النماذج */
+.form-box { max-width: 480px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
+.form-box h3 { font-size: 1.8rem; }
+.form-control, .form-select { font-family: var(--font-body); }
+
+
+
+/* ===== القائمة ===== */
+.menu-card { display: flex; align-items: center; width: 100%; }
+.nav-link { display: flex; align-items: center; gap: .45rem; }
+.nav-link i { font-size: 1.05rem; }
+.navbar-dark .nav-link.active { color: #fff; }
+.menu-actions { display: flex; align-items: center; }
+.menu-logout i, .menu-login i { margin-left: .35rem; }
+
+/* زر القائمة (همبرغر يتحول إلى ×) */
+.menu-toggle { width: 44px; height: 44px; border: 0; border-radius: 12px; background: rgba(255,255,255,.12); display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; transition: background .2s; }
+.menu-toggle:hover, .menu-toggle:focus-visible { background: rgba(255,255,255,.22); outline: none; }
+.menu-toggle span { width: 20px; height: 2px; border-radius: 2px; background: #fff; transition: transform .3s, opacity .2s; }
+.menu-toggle:not(.collapsed) span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle:not(.collapsed) span:nth-child(2) { opacity: 0; }
+.menu-toggle:not(.collapsed) span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 991.98px) {
+  .navbar-collapse { position: absolute; top: calc(100% + .5rem); right: .75rem; left: .75rem; z-index: 1050; }
+  .menu-card { flex-direction: column; align-items: stretch; background: #fff; border: 1px solid #e6ebf1; border-radius: 1.1rem; padding: .6rem; box-shadow: 0 18px 40px rgba(20,40,70,.18); }
+  .menu-user { display: flex; align-items: center; gap: .75rem; padding: .6rem .6rem .9rem; margin-bottom: .4rem; border-bottom: 1px solid #edf1f5; }
+  .menu-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--main), #2f7fb0); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.15rem; position: relative; flex-shrink: 0; }
+  .menu-avatar::after { content: ''; position: absolute; bottom: 1px; left: 1px; width: 11px; height: 11px; border-radius: 50%; background: #22c55e; border: 2px solid #fff; }
+  .menu-user-info { display: flex; flex-direction: column; min-width: 0; line-height: 1.4; }
+  .menu-user-info strong { color: var(--text); font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .menu-user-info small { color: #6b7686; font-size: .8rem; overflow: hidden; text-overflow: ellipsis; }
+  .navbar-nav { gap: .15rem; }
+  .navbar-dark .menu-card .nav-link { color: #3b4656; font-size: 1rem; padding: .7rem .8rem; border-radius: .7rem; border: 1px solid transparent; gap: .75rem; transition: background .15s, color .15s; }
+  .navbar-dark .menu-card .nav-link i { color: #7a8596; font-size: 1.15rem; width: 1.3rem; text-align: center; }
+  .navbar-dark .menu-card .nav-link:hover { background: #f3f6fa; color: var(--main); }
+  .navbar-dark .menu-card .nav-link.active { background: #eaf2fb; border-color: #cfe0f2; color: var(--main); font-weight: 700; }
+  .navbar-dark .menu-card .nav-link.active i, .navbar-dark .menu-card .nav-link:hover i { color: var(--main); }
+  .menu-actions { flex-direction: column; align-items: stretch; gap: .4rem; margin-top: .4rem; padding-top: .5rem; border-top: 1px solid #edf1f5; }
+  .menu-actions .btn { display: flex; align-items: center; gap: .75rem; padding: .7rem .8rem; border-radius: .7rem; font-size: 1rem; text-align: right; }
+  .menu-actions .menu-logout { border: 0; color: #d9363e; background: transparent; }
+  .menu-actions .menu-logout:hover { background: #fdeeee; color: #d9363e; }
+  .menu-actions .menu-login { justify-content: center; }
+  .menu-actions .menu-logout i, .menu-actions .menu-login i { margin: 0; font-size: 1.15rem; }
+  .menu-register { display: flex; align-items: center; justify-content: center; gap: .5rem; padding: .55rem; color: var(--main); text-decoration: none; font-weight: 500; border-radius: .7rem; }
+  .menu-register:hover { background: #f3f6fa; }
+}
+
+/* ===== الفوتر ===== */
+.site-footer { background: var(--main); color: rgba(255,255,255,.85); display: flex; align-items: center; justify-content: center; gap: .6rem; flex-wrap: wrap; }
+.footer-sep { opacity: .5; }
+.footer-logo { font-family: 'FigaroLab Brand', 'Inter', sans-serif; font-weight: 400; font-size: 15px; letter-spacing: 1px; -webkit-font-smoothing: antialiased; color: #fff; text-decoration: none; transition: opacity .2s; }
+.footer-logo span { color: var(--accent); }
+.footer-logo:hover { color: #fff; opacity: .85; }
+
+/* ===== واجهة الزائر وأزرار الواجهة ===== */
+.btn-glass { background: rgba(255,255,255,.14); color: #fff; border: 1px solid rgba(255,255,255,.35); backdrop-filter: blur(4px); }
+.btn-glass:hover { background: rgba(255,255,255,.26); color: #fff; }
+.hero .btn i { margin-left: .35rem; }
+.hero-guest { padding-bottom: 3.25rem; }
+.guest-cta { max-width: 520px; margin: 0 auto; }
+.guest-note { display: inline-flex; align-items: center; gap: .4rem; background: rgba(0,0,0,.15); border-radius: 999px; padding: .35rem 1rem; font-size: .95rem; margin-bottom: 1.1rem; }
+.guest-buttons { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+.guest-buttons .btn { min-width: 210px; border-radius: .8rem; }
+.hero-hello { font-size: 1.05rem; opacity: .9; margin-bottom: .25rem; }
+.hero-quick { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+.hero-quick .btn { border-radius: .7rem; }
+@media (max-width: 575.98px) { .guest-buttons .btn { width: 100%; } }
+.hero-faculty { display: block; width: fit-content; margin: .4rem auto 0; font-size: .85rem; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: .15rem .8rem; }
+
+/* ===== صفحة الكليات ===== */
+.faculty-card { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .5rem; background: #fff; border-radius: 1.1rem; padding: 1.75rem 1rem 1.4rem; box-shadow: 0 2px 10px rgba(0,0,0,.07); color: var(--text); text-decoration: none; height: 100%; border: 1px solid transparent; transition: transform .2s, box-shadow .2s, border-color .2s; }
+.faculty-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(20,40,70,.13); border-color: #cfe0f2; color: var(--text); }
+.faculty-card img { width: 96px; height: 96px; object-fit: contain; border-radius: 50%; box-shadow: 0 4px 14px rgba(0,0,0,.12); }
+.faculty-card h5 { font-family: var(--font-display); font-weight: 700; margin: .4rem 0 0; font-size: 1.15rem; }
+.faculty-count { font-size: .85rem; color: var(--main); background: #eaf2fb; border-radius: 999px; padding: .15rem .8rem; }
+.faculty-go { position: absolute; top: 1rem; left: 1rem; font-size: 1.3rem; color: #b8c4d2; transition: color .2s, transform .2s; }
+.faculty-card:hover .faculty-go { color: var(--main); transform: translateX(-3px); }
+.back-link { display: inline-flex; align-items: center; gap: .35rem; color: var(--main); text-decoration: none; margin-bottom: 1rem; font-weight: 500; }
+.faculty-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.faculty-head img { width: 72px; height: 72px; object-fit: contain; border-radius: 50%; background: #fff; box-shadow: 0 4px 14px rgba(0,0,0,.12); }
+
+/* زر تم التسليم لصاحبه */
+.btn-returned { background: #e8f6ee; color: #1e7a46; border: 1px solid #bfe5cf; border-radius: .6rem; font-weight: 500; }
+.btn-returned:hover { background: #1e7a46; color: #fff; border-color: #1e7a46; }
+.returned-intro { color: #5b6470; }
+
+/* ===== شاشات الحاسوب (992px فأكبر) ===== */
+@media (min-width: 992px) {
+  .site-nav { padding-top: .65rem; padding-bottom: .65rem; }
+  .navbar-nav { margin-inline-start: 1.5rem; gap: .2rem; }
+  .navbar-dark .navbar-nav .nav-link { color: rgba(255,255,255,.82); padding: .45rem .75rem; border-radius: .65rem; white-space: nowrap; transition: background .15s, color .15s; }
+  .navbar-dark .navbar-nav .nav-link:hover { color: #fff; background: rgba(255,255,255,.1); }
+  .navbar-dark .navbar-nav .nav-link.active { color: #fff; background: rgba(255,255,255,.16); }
+  .menu-actions { gap: .75rem; white-space: nowrap; }
+  .nav-hello { color: rgba(255,255,255,.9); font-size: .95rem; }
+  .menu-logout { border-radius: .6rem; padding: .35rem .8rem; }
+  .hero { padding: 4.5rem 2rem; }
+  .hero h1, .hero .lead { max-width: 760px; margin-left: auto; margin-right: auto; }
+  .item-img { height: 200px; }
+  main.container { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+}
+@media (min-width: 1200px) { main.container, .site-nav .container { max-width: 1140px; } }
